@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
 
-    <title>Collect Main Page</title>
+    <title>Size Main Page</title>
 
   </head>
 
