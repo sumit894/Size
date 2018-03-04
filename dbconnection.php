@@ -21,12 +21,12 @@ $remote_databaseName = "heroku_3f2891efd6626a1";
 //======================================================================
 $possibleLocalhosts = array('127.0.0.1', "::1", "localhost"); // Any host name that isn't your production host.
 $activeDatabaseConnection = 'DB Connection Not Set';
-$collectMySQLConnection=null;
+$sizeMySQLConnection=null;
 if(in_array($_SERVER['REMOTE_ADDR'], $possibleLocalhosts)) // If our REMOTE_ADDR is in our possibleLocalhosts, it means we're running this code locally. Do this:
 {
 	// Open a connection with our local database
-	$collectMySQLConnection = mysqli_connect($local_host, $local_username, $local_password, $local_databaseName);
-	if (!$collectMySQLConnection) {
+	$sizeMySQLConnection = mysqli_connect($local_host, $local_username, $local_password, $local_databaseName);
+	if (!$sizeMySQLConnection) {
     die('Could not connect: ' . mysql_error());
 }
 	// Set our activeDatabaseConnection variable to help with debugging
@@ -35,7 +35,7 @@ if(in_array($_SERVER['REMOTE_ADDR'], $possibleLocalhosts)) // If our REMOTE_ADDR
 else // If our REMOTE_ADDR wasn't a localhost, we must be working remotely, from our production environment.
 {
 	// Open a connection with our production database
-	$collectMySQLConnection = mysqli_connect($remote_host, $remote_username, $remote_password, $remote_databaseName);
+	$sizeMySQLConnection = mysqli_connect($remote_host, $remote_username, $remote_password, $remote_databaseName);
 	// Set our activeDatabaseConnection variable to help with debugging
 	$activeDatabaseConnection = "Remote DB";
 }
@@ -179,23 +179,23 @@ if (isset($_GET['wipeAndResetDB'])) // Only enter this if our URL contains a "wi
 	echo '<h1>Database Configuration Options (Active Database: ' . $activeDatabaseConnection . ')</h1>';
 
 	// Wipe all tables in database (code modified from http://stackoverflow.com/a/3493398):
-	$collectMySQLConnection->query('SET foreign_key_checks = 0');
-	if ($result = $collectMySQLConnection->query("SHOW TABLES"))
+	$sizeMySQLConnection->query('SET foreign_key_checks = 0');
+	if ($result = $sizeMySQLConnection->query("SHOW TABLES"))
 	{
 	    while($row = $result->fetch_array(MYSQLI_NUM))
 	    {
-	        $collectMySQLConnection->query('DROP TABLE IF EXISTS '.$row[0]);
+	        $sizeMySQLConnection->query('DROP TABLE IF EXISTS '.$row[0]);
 	    }
 	}
-	$collectMySQLConnection->query('SET foreign_key_checks = 1');
+	$sizeMySQLConnection->query('SET foreign_key_checks = 1');
 	echo '</br>Successfully wiped/deleted/droped everything in database.</br>';
 
 	// Execute each of the commands in the $dbSchema array.
 	foreach ($dbSchema as $task => $sqlCode) {
-		if (mysqli_query($collectMySQLConnection, $sqlCode)) {
+		if (mysqli_query($sizeMySQLConnection, $sqlCode)) {
 			echo '</br>Success: ' . $task . '</br>';
 		} else {
-			echo '</br>Error: ' . $task . ' | ' . mysqli_error($collectMySQLConnection) . '</br>';
+			echo '</br>Error: ' . $task . ' | ' . mysqli_error($sizeMySQLConnection) . '</br>';
 		}
 	}
 
