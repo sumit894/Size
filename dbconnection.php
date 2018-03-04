@@ -51,35 +51,61 @@ $dbSchema['Create User_Transaction Table'] =
 	DATE_ADDED TIMESTAMP,
 	FIRST_NAME VARCHAR (225),
 	LAST_NAME VARCHAR (225),
-	RECIPIENT_NAME VARCHAR (225),
 	EMAIL VARCHAR (225),
-	PHONE VARCHAR (15),
-	USER_ADDRESS VARCHAR (225),
-	DEST_ADDRESS VARCHAR (225),
-	WEIGHT VARCHAR(225),
 	HEIGHT VARCHAR(225),
 	WIDTH VARCHAR(225),
 	PRIMARY KEY (ITEM_ID)
 );";
+
+// $dbSchema['Create User_Transaction Table'] =
+// "CREATE TABLE User_Transaction (
+// 	ITEM_ID VARCHAR (225) NOT NULL ,
+// 	DATE_ADDED TIMESTAMP,
+// 	FIRST_NAME VARCHAR (225),
+// 	LAST_NAME VARCHAR (225),
+// 	RECIPIENT_NAME VARCHAR (225),
+// 	EMAIL VARCHAR (225),
+// 	PHONE VARCHAR (15),
+// 	USER_ADDRESS VARCHAR (225),
+// 	DEST_ADDRESS VARCHAR (225),
+// 	WEIGHT VARCHAR(225),
+// 	HEIGHT VARCHAR(225),
+// 	WIDTH VARCHAR(225),
+// 	PRIMARY KEY (ITEM_ID)
+// );";
+
+//re-evaluate need for phone and user address
+// $dbSchema['Create User_Profile Table'] =
+// "CREATE TABLE User_Profile (
+// 	EMAIL VARCHAR (225) NOT NULL,
+// 	FIRST_NAME VARCHAR (225),
+// 	LAST_NAME VARCHAR (225),
+// 	PHONE VARCHAR (15),
+// 	USER_ADDRESS VARCHAR (225),
+// 	PASSWORD VARCHAR (20),
+// 	PRIMARY KEY (EMAIL)
+// );";
 
 $dbSchema['Create User_Profile Table'] =
 "CREATE TABLE User_Profile (
 	EMAIL VARCHAR (225) NOT NULL,
 	FIRST_NAME VARCHAR (225),
 	LAST_NAME VARCHAR (225),
-	PHONE VARCHAR (15),
-	USER_ADDRESS VARCHAR (225),
+	PASSWORD VARCHAR (20),
 	PRIMARY KEY (EMAIL)
 );";
 
 
-$dbSchema['Insert into User_Transaction'] =
-"INSERT INTO User_Transaction(ITEM_ID, DATE_ADDED, FIRST_NAME, LAST_NAME, RECIPIENT_NAME, EMAIL, PHONE, USER_ADDRESS, DEST_ADDRESS, WEIGHT, HEIGHT, WIDTH) VALUES
-	('j2b4k235b23kb23k5b2k','2017-05-01','Ovi','Grig','CPoonPoon','o.grigorescu@hotmail.com','9055723422','21 McCurdy Road, Guelph, ON','444 TaShi road, Beijing, China','11.1234','12','11');";
+//"INSERT INTO User_Transaction(ITEM_ID, DATE_ADDED, FIRST_NAME, LAST_NAME, RECIPIENT_NAME, EMAIL, PHONE, USER_ADDRESS, DEST_ADDRESS, WEIGHT, HEIGHT, WIDTH) VALUES
+	// ('j2b4k235b23kb23k5b2k','2017-05-01','Ovi','Grig','CPoonPoon','o.grigorescu@hotmail.com','9055723422','21 McCurdy Road, Guelph, ON','444 TaShi road, Beijing, China','11.1234','12','11');";
 
-$dbSchema['Insert into User_Profile'] =
-"INSERT INTO User_Profile(EMAIL, FIRST_NAME, LAST_NAME, PHONE, USER_ADDRESS) VALUES
-	('o.grigorescu@hotmail.com','Ovi','Grig','9055723422','21 McCurdy Road, Guelph, ON');";
+// $dbSchema['Insert into User_Profile'] =
+// "INSERT INTO User_Profile(EMAIL, FIRST_NAME, LAST_NAME, PHONE, USER_ADDRESS, PASSWORD) VALUES
+// 	('o.grigorescu@hotmail.com','Ovi','Grig','9055723422','21 McCurdy Road, Guelph, ON', 'Password');";
+
+	$dbSchema['Insert into User_Profile'] =
+	"INSERT INTO User_Profile(EMAIL, FIRST_NAME, LAST_NAME, PASSWORD) VALUES
+		('o.grigorescu@hotmail.com','Ovi','Grig','Password');";
 
 
 /*

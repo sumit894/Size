@@ -107,6 +107,7 @@ for c in cnts:
 		pixelsPerMetric = dB
 
 	# compute the size of the object
+    # SUMIT & TEAM: Change hard code number values as fit so as to make accurate values 
 	dimA = dA / 40
 	dimB = dB /8.75
 

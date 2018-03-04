@@ -15,11 +15,14 @@
   Last Name:<br>
   <input type="text" name="u_lname" required><br>
 
-  	Phone:<br>
+  Password:<br>
+  <input type="text" name="password" required><br>
+
+  <!-- Phone:<br>
   <input type="text" name="phone" required><br>
 
 	Address:<br>
-  <input type="text" name="address" required><br>
+  <input type="text" name="address" required><br> -->
 
 <input type="submit" value="Submit"><br>
 </form>
